@@ -1,0 +1,20 @@
+<template>
+  <require from="../resources/elements/blog-post"></require>
+
+  <div class="alert alert-danger" if.bind="error">
+    ${error}
+  </div>
+  
+  <div class="alert alert-dark">
+    Viewing posts created in ${archive}
+  </div>
+
+  <div repeat.for="post of posts">
+  
+    <blog-post post.bind="post"></blog-post>
+
+    <a route-href="route: post-view; params.bind: {slug: post.slug}">View Post &raquo;</a>
+    <hr/> 
+  </div>
+ 
+</template>
