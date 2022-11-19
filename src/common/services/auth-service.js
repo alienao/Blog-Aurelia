@@ -12,7 +12,7 @@ export class AuthService {
           this.currentUser = name;
           resolve({ user: name });
         } else {
-          resolve({ error: "Invalid credentials." });
+          reject(new Error("Invalid credentials." ));
         }
       }, this.delay);
     });
@@ -23,7 +23,7 @@ export class AuthService {
       setTimeout(() => {
         this.currentUser = null;
         if (this.currentUser) {
-          resolve({ error: "Error logging out." });
+          reject(new Error("Error logging out." ));
         } else {
           resolve({ success: true });
         }
@@ -39,7 +39,7 @@ export class AuthService {
           this.currentUser = name;
           resolve({ user: name });
         } else {
-          resolve({ error: "This user already exists." });
+          reject(new Error("This user already exists." ));
         }
       }, this.delay);
     });

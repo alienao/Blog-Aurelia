@@ -1,10 +1,9 @@
 <template>
+  <require from="../resources/elements/blog-post"></require>
+  
   <div class="alert alert-danger" if.bind="error">
     ${error}
   </div>
-  <article class="blog-post" if.bind="!error">
-    <h2 class="blog-post-title mb-1">${post.title}</h2>
-    <p class="blog-post-meta">${post.createdAt} by <a href="#">${post.author}</a></p>
-    <p>${post.body}</p>
-  </article>
+
+  <blog-post post.bind="post"></blog-post>
 </template>

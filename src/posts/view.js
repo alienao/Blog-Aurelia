@@ -8,12 +8,14 @@ export class View {
   }
 
   activate(params) {
-    this.postService.find(params.slug).then((data) => {
-      if (data.error) {
-        this.error = data.error;
-      } else {
+    this.error = "";
+    this.postService
+      .find(params.slug)
+      .then((data) => {
         this.post = data.post;
-      }
-    });
+      })
+      .catch((error) => {
+        this.error = error.message;
+      });
   }
 }
